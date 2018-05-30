@@ -15,7 +15,7 @@ import sys
 import tensorflow as tf
 import datetime
 
-def _load_data(data, n_prev = 10):
+def _load_data(data, n_prev=10):
     docX, docY = [], []
     for i in range(len(data) - n_prev - 1):
         docX.append(data[i : i + n_prev])
@@ -24,7 +24,7 @@ def _load_data(data, n_prev = 10):
     alsY = np.array(docY)
     return alsX, alsY
 
-def train_test_split(df, test_size=0., n_prev):
+def train_test_split(df, test_size=0., n_prev=10):
     ntrn = round(len(df) * (1 - test_size))
     ntrn = int(ntrn)
     print ntrn
