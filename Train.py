@@ -70,7 +70,7 @@ for _ in range(1000):
 
                     data = np.array(result_list)
 
-                    (x_train, y_train), (x_test, y_test) = train_test_split(data, prevs[tii_in])
+                    (x_train, y_train), (x_test, y_test) = train_test_split(data, 0, prevs[tii_in])
 
                     print y_train.shape
                     y_train = to_categorical(y_train)
