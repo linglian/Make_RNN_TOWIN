@@ -19,7 +19,7 @@ model.add(SimpleRNN(input_dim=1000, units=300))
 model.add(Dense(units=1, input_dim=300))
 model.add(Activation('linear'))
 rmsprop = RMSprop(lr=0.0001)
-model.load_weights('../my_model_weight.h5')
+model.load_weights('./my_model_weight.h5')
 model.compile(loss=losses.mean_squared_error, optimizer=rmsprop,
               metrics=['mae', 'acc'])
 

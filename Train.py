@@ -12,6 +12,7 @@ import keras
 import pandas as pd
 import numpy as np
 import sys
+import os
 import tensorflow as tf
 import datetime
 
@@ -35,7 +36,7 @@ def train_test_split(df, test_size=0., n_prev=10):
     return (x_train, y_train), (x_test, y_test)
 
 train_list = [
-    './Make_RNN_TO_WIN/龙虎斗平民场_2018-05-30_20:42:04.npy',
+    './龙虎斗平民场_2018-05-30_20:42:04.npy',
 #    './龙虎斗平民场_2018-05-28_21:21:59.npy',
 #    './龙虎斗平民场_2018-05-29_23:15:02.npy'
 ]
@@ -95,7 +96,8 @@ for _ in range(1000):
                                     kernel_regularizer=keras.regularizers.l2(0.001), activation='softmax'))
                     model.add(Activation('relu'))
                     rmsprop = RMSprop(lr=lr)
-                    model.load_weights('./my_model_weight_softmax3_.h5')
+                    if os.path.exists('./my_model_weight_softmax3_.h5'):
+                        model.load_weights('./my_model_weight_softmax3_.h5')
                     model.compile(loss=losses.categorical_crossentropy, optimizer=rmsprop,
                                   metrics=[keras.metrics.binary_accuracy])
 
